@@ -12,22 +12,6 @@ header {
     text-align: center;
 }
 
-nav {
-    background-color: #666;
-    padding: 10px;
-    text-align: center;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 10px;
-}
-
-nav a:hover {
-    background-color: #999;
-}
-
 section {
     padding: 20px;
     margin: 20px;
@@ -67,4 +51,8 @@ footer {
     height: 150px;
     border-radius: 50%;
     transition: transform 0.3s ease-in-out;
+}
+
+.system img:hover {
+    transform: scale(1.2);
 }
