@@ -15,7 +15,7 @@ header {
 section {
     padding: 20px;
     margin: 20px;
-    background-color: #fff;
+    background-color: #000000;
     text-align: center;
 }
 
@@ -33,6 +33,7 @@ footer {
     display: inline-block;
     margin: 20px;
     cursor: pointer;
+    color: white;
 }
 
 .planet img {
@@ -55,4 +56,11 @@ footer {
 
 .system img:hover {
     transform: scale(1.2);
+}
+
+.system {
+    display: inline-block;
+    margin: 20px;
+    cursor: pointer;
+    color: white;
 }
