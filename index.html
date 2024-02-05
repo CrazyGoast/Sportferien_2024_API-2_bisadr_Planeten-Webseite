@@ -1,14 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Planeten</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #666;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            background-color: #999;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .planet {
+            display: inline-block;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .planet img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .planet img:hover {
+            transform: scale(1.2);
+        }
+    </style>
 </head>
 
 <body>
-
+    <header>
+        <h1>Willkommen im Sonnensystem</h1>
+    </header>
+    <nav>
+        <a href="/Planeten/Merkur.html">Merkur</a>
+        <a href="/Planeten/Venus.html">Venus</a>
+        <a href="/Planeten/Erde.html">Erde</a>
+        <a href="/Planeten/Mars.html">Mars</a>
+        <a href="/Planeten/Jupiter.html">Jupiter</a>
+        <a href="/Planeten/Saturn.html">Saturn</a>
+        <a href="/Planeten/Uranus.html">Uranus</a>
+        <a href="Planeten/Neptun.html">Neptun</a>
+    </nav>
+    <section>
+        <div class="planet">
+            <img src="/Bilder/Merkur.jpg" alt="Merkur">
+            <p>Merkur</p>
+        </div>
+        <div class="planet">
+            <img src="/Bilder/Venus.jpg" alt="Venus">
+            <p>Venus</p>
+        </div>
+        <div class="planet">
+            <img src="/Bilder/Erde.jpg" alt="Erde">
+            <p>Erde</p>
+        </div>
+        <div class="planet">
+            <img src="Bilder/Mars.jpg" alt="Mars">
+            <p>Mars</p>
+        </div>
+        <div class="planet">
+            <img src="/Bilder/Jupiter.jpg" alt="Jupiter">
+            <p>Jupiter</p>
+        </div>
+        <div class="planet">
+            <img src="/Bilder/Saturn.jpg" alt="Saturn">
+            <p>Saturn</p>
+        </div>
+        <div class="planet">
+            <img src="/Bilder/Uranus.jpg" alt="Uranus">
+            <p>Uranus</p>
+        </div>
+        <div class="planet">
+            <img src="/Bilder/Neptun.jpg" alt="Neptun">
+            <p>Neptun</p>
+        </div>
+    </section>
 </body>
 
 </html>
