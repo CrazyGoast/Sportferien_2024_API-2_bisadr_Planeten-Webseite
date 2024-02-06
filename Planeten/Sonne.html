@@ -14,8 +14,43 @@
     </header>
     <section>
         <img src="/Bilder/Sonne.png">
-        <p>Erde ist der dritte Planet unseres Sonnensystems und der einzige, auf dem bekannterweise Leben existiert. Sie
-            ist die Heimat von Millionen von Arten, einschließlich des Menschen.</p>
+        <div id="sun-info">Daten werden geladen...</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var planetName = 'Sun';
+                $.ajax({
+                    method: 'GET',
+                    url: 'https://api.api-ninjas.com/v1/stars?name=' + planetName,
+                    headers: {
+                        'X-Api-Key': 'qTRfOwwc/jXet0zOlGIGvg==f47WreTpyZOG1nM4'
+                    },
+                    contentType: 'application/json',
+                    success: function (result) {
+
+                        var lightYearToKm = 9.461e12;
+                        var distanceInKm = result[0].distance_light_year * lightYearToKm;
+                        distanceInKm = distanceInKm.toFixed(2);
+
+                        var sunInfo = result[0];
+                        var planetInfoHtml = '<h1>' + planetName + '</h1>';
+                        planetInfoHtml += '<p>Scheinbare Helligkeit: ' + sunInfo.apparent_magnitude + '</p>';
+                        planetInfoHtml += '<p>Absolute Helligkeit: ' + sunInfo.absolute_magnitude + '</p>';
+                        planetInfoHtml += '<p>Entfernung: ' + distanceInKm + ' Kilometer</p>';
+                        planetInfoHtml += '<p>Spektralklasse: ' + sunInfo.spectral_class + '</p>';
+                        planetInfoHtml += '<p>Masse: 1,989.000.000.000.000 Gigatonnen</p>';
+
+
+                        $('#sun-info').html(planetInfoHtml);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('Error: ', textStatus, errorThrown);
+                        $('#sun-info').html('Fehler beim Laden der Planeteninformationen');
+                    }
+                });
+            });
+        </script>
+
     </section>
 </body>
 
