@@ -14,30 +14,38 @@
     </header>
     <section>
         <img src="/Bilder/Neptun.jpg">
-        <div id="neptun-info">Daten werden geladen...</div>
+        <div id="neptune-info">Daten werden geladen...</div> <!-- Make sure this element exists in your HTML -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            var city = 'Zürich'
-            $.ajax({
-                method: 'GET',
-                url: 'https://api.api-ninjas.com/v1/weather?city=' + city,
-                headers: { 'X-Api-Key': 'xFpGPYfW6e0AbBuUqMSMXQ==iksODiXlk7YwgmL7' },
-                contentType: 'application/json',
-                success: function (result) {
-                    var weatherHtml = '<h1>' + city + ' Wetter</h1>';
-                    weatherHtml += '<p>temperature: ' + result.temp + '°C</p>';
-                    weatherHtml += '<p>min. temperature: ' + result.min_temp + '°C</p>';
-                    weatherHtml += '<p>max. temperature: ' + result.max_temp + '°C</p>';
-                    weatherHtml += '<p>wind speed: ' + result.wind_speed + 'km/h</p>';
-                    weatherHtml += '<p>humidity: ' + result.humidity + '%</p>';
-                    $('#zuerich-info').html(weatherHtml);
-                },
-                error: function ajaxError(jqXHR) {
-                    console.error('Error: ', jqXHR.responseText);
-                    $('#zuerich-info').html('Fehler beim Laden der Wetterinformationen');
-                }
+            // Wrap your code in document ready function to ensure DOM elements are loaded before executing JS
+            $(document).ready(function () {
+                var planetName = 'Neptune';
+                $.ajax({
+                    method: 'GET',
+                    url: 'https://api.api-ninjas.com/v1/planets?name=' + planetName,
+                    headers: {
+                        'X-Api-Key': 'qTRfOwwc/jXet0zOlGIGvg==f47WreTpyZOG1nM4'
+                    },
+                    contentType: 'application/json',
+                    success: function (result) {
+                        var planetInfoHtml = '<h1>' + planetName + '</h1>';
+                        planetInfoHtml += '<p>Mass: ' + result[0].mass + ' Jupiter</p>';
+                        planetInfoHtml += '<p>Radius: ' + result[0].radius + ' Jupiter</p>';
+                        planetInfoHtml += '<p>Orbital Period: ' + result[0].period + ' Earth days</p>';
+                        planetInfoHtml += '<p>Semi Major Axis: ' + result[0].semi_major_axis + ' AU</p>';
+                        planetInfoHtml += '<p>Temperature: ' + result[0].temperature + ' Kelvin</p>';
+                        planetInfoHtml += '<p>Distance from Earth: ' + result[0].distance_light_year + ' light years</p>';
+                        $('#neptune-info').html(planetInfoHtml); // Use the correct ID here
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) { // Include textStatus and errorThrown to catch more error details
+                        console.error('Error: ', textStatus, errorThrown);
+                        $('#neptune-info').html('Fehler beim Laden der Planeteninformationen');
+                    }
+                });
             });
         </script>
+
+
     </section>
 </body>
 
