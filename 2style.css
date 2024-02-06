@@ -22,10 +22,6 @@ img {
     margin-right: 20px;
 }
 
-p {
-    max-width: 50%;
-}
-
 header {
     background-color: #333;
     color: #fff;
@@ -37,8 +33,4 @@ section {
     padding: 20px;
     background-color: #000000;
     text-align: center;
-}
-
-#planetData {
-    color: white;
 }

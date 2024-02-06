@@ -14,7 +14,7 @@
     </header>
     <section>
         <img src="/Bilder/Neptun.jpg">
-        <div id="neptune-info">Daten werden geladen...</div> <!-- Make sure this element exists in your HTML -->
+        <div id="neptune-info">Daten werden geladen...</div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             $(document).ready(function () {
@@ -32,7 +32,7 @@
                         distanceInKm = distanceInKm.toFixed(2);
 
                         var jupiterMassToMegatonnes = 1.898e21;
-                        var massInGigatonnes = (result[0].mass * jupiterMassToMegatonnes / 1e9).toFixed(2); // Umwandlung in Gigatonnen
+                        var massInGigatonnes = (result[0].mass * jupiterMassToMegatonnes / 1e9).toFixed(2);
 
                         var jupiterRadiusToKm = 69.911;
                         var radiusInKm = result[0].radius * jupiterRadiusToKm;
@@ -40,7 +40,7 @@
 
                         var temperatureInCelsius = (result[0].temperature - 273.15).toFixed(2);
                         var planetInfoHtml = '<h1>' + planetName + '</h1>';
-                        planetInfoHtml += '<p>Mass: ' + massInGigatonnes + ' Gigatonnes</p>'; // Anzeige in Gigatonnen
+                        planetInfoHtml += '<p>Mass: ' + massInGigatonnes + ' Gigatonnes</p>';
                         planetInfoHtml += '<p>Radius: ' + radiusInKm + ' kilometers</p>';
                         planetInfoHtml += '<p>Umlaufzeit: ' + result[0].period + ' Erdtage</p>';
                         planetInfoHtml += '<p>Temperature: ' + temperatureInCelsius + ' &deg;Celsius</p>';
