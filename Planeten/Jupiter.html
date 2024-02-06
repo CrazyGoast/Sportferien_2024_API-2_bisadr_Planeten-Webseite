@@ -42,11 +42,11 @@
 
                         var temperatureInCelsius = (result[0].temperature - 273.15).toFixed(2);
                         var planetInfoHtml = '<h1>' + planetName + '</h1>';
-                        planetInfoHtml += '<p>Mass: ' + massInGigatonnes + ' Gigatonnes</p>';
-                        planetInfoHtml += '<p>Radius: ' + radiusInKm + ' kilometers</p>';
+                        planetInfoHtml += '<p>Mass: ' + massInGigatonnes + ' Gigatonnen</p>';
+                        planetInfoHtml += '<p>Radius: ' + radiusInKm + ' Kilometer</p>';
                         planetInfoHtml += '<p>Umlaufzeit: ' + result[0].period + ' Erdtage / ' + circulationTime + ' Jahre</p>';
                         planetInfoHtml += '<p>Temperature: ' + temperatureInCelsius + ' &deg;Celsius</p>';
-                        planetInfoHtml += '<p>Distance from Earth: ' + distanceInKm + ' kilometers</p>';
+                        planetInfoHtml += '<p>Distance from Earth: ' + distanceInKm + ' Kilometer</p>';
                         $('#jupiter-info').html(planetInfoHtml);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
