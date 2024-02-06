@@ -12,16 +12,18 @@ body {
 section {
     display: flex;
     align-items: center;
+    width: 80%;    
+    margin: 0 auto;
 }
 
 img {
     max-width: 50%;
-    float: right;
-    margin-left: 20px;
+    height: auto;
+    margin-right: 20px;
 }
 
 p {
-    max-width: 40%;
+    max-width: 50%;
 }
 
 header {
@@ -33,7 +35,6 @@ header {
 
 section {
     padding: 20px;
-    margin: 20px;
     background-color: #000000;
     text-align: center;
 }

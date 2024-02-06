@@ -14,9 +14,30 @@
     </header>
     <section>
         <img src="/Bilder/Neptun.jpg">
-        <p>Neptun ist der dritte Planet unseres Sonnensystems und der einzige, auf dem bekannterweise Leben existiert.
-            Sie
-            ist die Heimat von Millionen von Arten, einschließlich des Menschen.</p>
+        <div id="neptun-info">Daten werden geladen...</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            var city = 'Zürich'
+            $.ajax({
+                method: 'GET',
+                url: 'https://api.api-ninjas.com/v1/weather?city=' + city,
+                headers: { 'X-Api-Key': 'xFpGPYfW6e0AbBuUqMSMXQ==iksODiXlk7YwgmL7' },
+                contentType: 'application/json',
+                success: function (result) {
+                    var weatherHtml = '<h1>' + city + ' Wetter</h1>';
+                    weatherHtml += '<p>temperature: ' + result.temp + '°C</p>';
+                    weatherHtml += '<p>min. temperature: ' + result.min_temp + '°C</p>';
+                    weatherHtml += '<p>max. temperature: ' + result.max_temp + '°C</p>';
+                    weatherHtml += '<p>wind speed: ' + result.wind_speed + 'km/h</p>';
+                    weatherHtml += '<p>humidity: ' + result.humidity + '%</p>';
+                    $('#zuerich-info').html(weatherHtml);
+                },
+                error: function ajaxError(jqXHR) {
+                    console.error('Error: ', jqXHR.responseText);
+                    $('#zuerich-info').html('Fehler beim Laden der Wetterinformationen');
+                }
+            });
+        </script>
     </section>
 </body>
 
