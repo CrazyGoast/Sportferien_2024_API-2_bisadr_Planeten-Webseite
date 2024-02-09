@@ -3,19 +3,17 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000000;
+    background-image: url('/Bilder/Hintergrund.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
 }
 
 header {
     background-color: #333;
     color: #fff;
     padding: 10px 20px;
-    text-align: center;
-}
-
-section {
-    padding: 20px;
-    margin: 20px;
-    background-color: #000000;
     text-align: center;
 }
 
