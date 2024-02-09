@@ -14,47 +14,39 @@
     </header>
     <section>
         <img src="/Bilder/ISS.jpg">
-        <div id="venus-info">Daten werden geladen...</div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <p id="iss-position">Loading...</p>
+        <p id="astronauts">Loading...</p>
+
         <script>
-            $(document).ready(function () {
-                var planetName = 'Venus';
-                $.ajax({
-                    method: 'GET',
-                    url: 'https://api.api-ninjas.com/v1/planets?name=' + planetName,
-                    headers: {
-                        'X-Api-Key': 'qTRfOwwc/jXet0zOlGIGvg==f47WreTpyZOG1nM4'
-                    },
-                    contentType: 'application/json',
-                    success: function (result) {
-                        var lightYearToKm = 9.461e12;
-                        var distanceInKm = result[0].distance_light_year * lightYearToKm;
-                        distanceInKm = distanceInKm.toFixed(2);
+            function getISSPosition() {
+                fetch('http://api.open-notify.org/iss-now.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const issPosition = data.iss_position;
+                        const latitude = issPosition.latitude;
+                        const longitude = issPosition.longitude;
+                        const positionText = `Die ISS befindet sich bei Breitengrad ${latitude} und Längengrad ${longitude}.`;
+                        document.getElementById('iss-position').textContent = positionText;
+                    })
+                    .catch(error => {
+                        console.log('Fehler beim Abrufen der ISS-Position:', error);
+                        document.getElementById('iss-position').textContent = 'Fehler beim Abrufen der ISS-Position.';
+                    });
 
-                        var circulationTime = (result[0].period / 365).toFixed(2);
+                fetch('http://api.open-notify.org/astros.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const numberOfAstros = data.number;
+                        const astroText = `Aktuell sind ${numberOfAstros} Astronauten auf der ISS.`;
+                        document.getElementById('astronauts').textContent = astroText;
+                    })
+                    .catch(error => {
+                        console.log('Fehler beim Abrufen der Astronautenanzahl:', error);
+                        document.getElementById('astronauts').textContent = 'Fehler beim Abrufen der Astronautenanzahl.';
+                    });
+            }
 
-                        var jupiterMassToMegatonnes = 1.898e21;
-                        var massInGigatonnes = (result[0].mass * jupiterMassToMegatonnes / 1e9).toFixed(2);
-
-                        var jupiterRadiusToKm = 69.911;
-                        var radiusInKm = result[0].radius * jupiterRadiusToKm;
-                        radiusInKm = radiusInKm.toFixed(2);
-
-                        var temperatureInCelsius = (result[0].temperature - 273.15).toFixed(2);
-                        var planetInfoHtml = '<h1>' + planetName + '</h1>';
-                        planetInfoHtml += '<p>Mass: ' + massInGigatonnes + ' Gigatonnen</p>';
-                        planetInfoHtml += '<p>Radius: ' + radiusInKm + ' Kilometer</p>';
-                        planetInfoHtml += '<p>Umlaufzeit: ' + result[0].period + ' Erdtage / ' + circulationTime + ' Jahre</p>';
-                        planetInfoHtml += '<p>Temperature: ' + temperatureInCelsius + ' &deg;Celsius</p>';
-                        planetInfoHtml += '<p>Entfernung: ' + distanceInKm + ' Kilometer</p>';
-                        $('#venus-info').html(planetInfoHtml);
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.error('Error: ', textStatus, errorThrown);
-                        $('#venus-info').html('Fehler beim Laden der Planeteninformationen');
-                    }
-                });
-            });
+            document.addEventListener('DOMContentLoaded', getISSPosition);
         </script>
 
     </section>
