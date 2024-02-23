@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISS</title>
-    <link rel="stylesheet" href="/css/2style.css">
+    <!Verlinkung von CSS>
+        <link rel="stylesheet" href="/css/2style.css">
 </head>
 
 <body>
@@ -17,40 +18,43 @@
         <p id="iss-position">Loading...</p>
         <p id="astronauts">Loading...</p>
 
-        <script>
-            function getISSPosition() {
-                fetch('http://api.open-notify.org/iss-now.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const issPosition = data.iss_position;
-                        const latitude = issPosition.latitude;
-                        const longitude = issPosition.longitude;
-                        const positionText = `Die ISS befindet sich bei Breitengrad ${latitude} und Längengrad ${longitude}.`;
-                        document.getElementById('iss-position').textContent = positionText;
-                    })
-                    .catch(error => {
-                        console.log('Fehler beim Abrufen der ISS-Position:', error);
-                        document.getElementById('iss-position').textContent = 'Fehler beim Abrufen der ISS-Position.';
-                    });
+        <!Script wurde mit Beispiel von open-notify.org und hilfe von ChatGPT gemacht.>
 
-                fetch('http://api.open-notify.org/astros.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const numberOfAstros = data.number;
-                        const astroText = `Aktuell sind ${numberOfAstros} Astronauten auf der ISS.`;
-                        document.getElementById('astronauts').textContent = astroText;
-                    })
-                    .catch(error => {
-                        console.log('Fehler beim Abrufen der Astronautenanzahl:', error);
-                        document.getElementById('astronauts').textContent = 'Fehler beim Abrufen der Astronautenanzahl.';
-                    });
-            }
+            <script>
+                function getISSPosition() {
+                    fetch('http://api.open-notify.org/iss-now.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const issPosition = data.iss_position;
+                            const latitude = issPosition.latitude;
+                            const longitude = issPosition.longitude;
+                            const positionText = `Die ISS befindet sich bei Breitengrad ${latitude} und Längengrad ${longitude}.`;
+                            document.getElementById('iss-position').textContent = positionText;
+                        })
+                        .catch(error => {
+                            console.log('Fehler beim Abrufen der ISS-Position:', error);
+                            document.getElementById('iss-position').textContent = 'Fehler beim Abrufen der ISS-Position.';
+                        });
 
-            document.addEventListener('DOMContentLoaded', getISSPosition);
-        </script>
+                    fetch('http://api.open-notify.org/astros.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const numberOfAstros = data.number;
+                            const astroText = `Aktuell sind ${numberOfAstros} Astronauten auf der ISS.`;
+                            document.getElementById('astronauts').textContent = astroText;
+                        })
+                        .catch(error => {
+                            console.log('Fehler beim Abrufen der Astronautenanzahl:', error);
+                            document.getElementById('astronauts').textContent = 'Fehler beim Abrufen der Astronautenanzahl.';
+                        });
+                }
+
+                document.addEventListener('DOMContentLoaded', getISSPosition);
+            </script>
 
     </section>
-    <a href="/Ueberseiten/Sateliten.html" class="arrow-link"><img src="/Bilder/Zurück.png" alt="Pfeil"></a>
+    <!Pfeil um zurück zu gehen>
+        <a href="/Ueberseiten/Sateliten.html" class="arrow-link"><img src="/Bilder/Zurück.png" alt="Pfeil"></a>
 </body>
 
 </html>
