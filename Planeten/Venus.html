@@ -16,49 +16,49 @@
         <img src="/Bilder/Venus.jpg">
         <div id="venus-info">Daten werden geladen...</div>
 
-        <!Script wurde mit Beispiel von api-ninjas.com und hilfe von ChatGPT gemacht.>
+        <!--Script wurde mit Beispiel von api-ninjas.com und hilfe von ChatGPT gemacht.-->
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    var planetName = 'Venus';
-                    $.ajax({
-                        method: 'GET',
-                        url: 'https://api.api-ninjas.com/v1/planets?name=' + planetName,
-                        headers: {
-                            'X-Api-Key': 'qTRfOwwc/jXet0zOlGIGvg==f47WreTpyZOG1nM4'
-                        },
-                        contentType: 'application/json',
-                        success: function (result) {
-                            var lightYearToKm = 9.461e12;
-                            var distanceInKm = result[0].distance_light_year * lightYearToKm;
-                            distanceInKm = distanceInKm.toFixed(2);
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var planetName = 'Venus';
+                $.ajax({
+                    method: 'GET',
+                    url: 'https://api.api-ninjas.com/v1/planets?name=' + planetName,
+                    headers: {
+                        'X-Api-Key': 'qTRfOwwc/jXet0zOlGIGvg==f47WreTpyZOG1nM4'
+                    },
+                    contentType: 'application/json',
+                    success: function (result) {
+                        var lightYearToKm = 9.461e12;
+                        var distanceInKm = result[0].distance_light_year * lightYearToKm;
+                        distanceInKm = distanceInKm.toFixed(2);
 
-                            var circulationTime = (result[0].period / 365).toFixed(2);
+                        var circulationTime = (result[0].period / 365).toFixed(2);
 
-                            var jupiterMassToMegatonnes = 1.898e21;
-                            var massInGigatonnes = (result[0].mass * jupiterMassToMegatonnes / 1e9).toFixed(2);
+                        var jupiterMassToMegatonnes = 1.898e21;
+                        var massInGigatonnes = (result[0].mass * jupiterMassToMegatonnes / 1e9).toFixed(2);
 
-                            var jupiterRadiusToKm = 69.911;
-                            var radiusInKm = result[0].radius * jupiterRadiusToKm;
-                            radiusInKm = radiusInKm.toFixed(2);
+                        var jupiterRadiusToKm = 69.911;
+                        var radiusInKm = result[0].radius * jupiterRadiusToKm;
+                        radiusInKm = radiusInKm.toFixed(2);
 
-                            var temperatureInCelsius = (result[0].temperature - 273.15).toFixed(2);
-                            var planetInfoHtml = '<h1>' + planetName + '</h1>';
-                            planetInfoHtml += '<p>Masse: ' + massInGigatonnes + ' Gigatonnen</p>';
-                            planetInfoHtml += '<p>Radius: ' + radiusInKm + ' Kilometer</p>';
-                            planetInfoHtml += '<p>Umlaufzeit: ' + result[0].period + ' Erdtage / ' + circulationTime + ' Jahre</p>';
-                            planetInfoHtml += '<p>Temperatur: ' + temperatureInCelsius + ' &deg;Celsius</p>';
-                            planetInfoHtml += '<p>Entfernung: ' + distanceInKm + ' Kilometer</p>';
-                            $('#venus-info').html(planetInfoHtml);
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            console.error('Error: ', textStatus, errorThrown);
-                            $('#venus-info').html('Fehler beim Laden der Planeteninformationen');
-                        }
-                    });
+                        var temperatureInCelsius = (result[0].temperature - 273.15).toFixed(2);
+                        var planetInfoHtml = '<h1>' + planetName + '</h1>';
+                        planetInfoHtml += '<p>Masse: ' + massInGigatonnes + ' Gigatonnen</p>';
+                        planetInfoHtml += '<p>Radius: ' + radiusInKm + ' Kilometer</p>';
+                        planetInfoHtml += '<p>Umlaufzeit: ' + result[0].period + ' Erdtage / ' + circulationTime + ' Jahre</p>';
+                        planetInfoHtml += '<p>Temperatur: ' + temperatureInCelsius + ' &deg;Celsius</p>';
+                        planetInfoHtml += '<p>Entfernung: ' + distanceInKm + ' Kilometer</p>';
+                        $('#venus-info').html(planetInfoHtml);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('Error: ', textStatus, errorThrown);
+                        $('#venus-info').html('Fehler beim Laden der Planeteninformationen');
+                    }
                 });
-            </script>
+            });
+        </script>
 
     </section>
     <a href="/Ueberseiten/Milchstrasse.html" class="arrow-link"><img src="/Bilder/Zurück.png" alt="Pfeil"></a>
